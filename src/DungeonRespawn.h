@@ -1,11 +1,11 @@
 #ifndef MODULE_DUNGEONRESPAWN_H
 #define MODULE_DUNGEONRESPAWN_H
 
-#include "ScriptMgr.h"
+#include "Chat.h"
+#include "Config.h"
 #include "LFGMgr.h"
 #include "Player.h"
-#include "Config.h"
-#include "Chat.h"
+#include "ScriptMgr.h"
 #include <vector>
 
 struct DungeonData
@@ -42,10 +42,10 @@ private:
     PlayerRespawnData* GetOrCreateRespawnData(Player* /*player*/);
     void CreateRespawnData(Player* /*player*/);
     void OnPlayerReleasedGhost(Player* /*player*/) override;
-    bool OnBeforeTeleport(Player* /*player*/, uint32 /*mapid*/, float /*x*/, float /*y*/, float /*z*/, float /*orientation*/, uint32 /*options*/, Unit* /*target*/) override;
-    void OnMapChanged(Player* /*player*/) override;
-    void OnLogin(Player* /*player*/) override;
-    void OnLogout(Player* /*player*/) override;
+    bool OnPlayerBeforeTeleport(Player* /*player*/, uint32 /*mapid*/, float /*x*/, float /*y*/, float /*z*/, float /*orientation*/, uint32 /*options*/, Unit* /*target*/) override;
+    void OnPlayerMapChanged(Player* /*player*/) override;
+    void OnPlayerLogin(Player* /*player*/) override;
+    void OnPlayerLogout(Player* /*player*/) override;
 };
 
 class DSWorldScript : public WorldScript
